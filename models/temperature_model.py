@@ -11,13 +11,13 @@ class TemperaturePredictor(nn.Module):
         self.fc = nn.Linear(hidden_size, output_size)
     
     def forward(self, x):
-        # Inicializar estados ocultos
+        # Initialize hidden states
         h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).requires_grad_()
         c0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size).requires_grad_()
         
-        # Pasar por LSTM
+        # Pass through LSTM
         out, (hn, cn) = self.lstm(x, (h0.detach(), c0.detach()))
         
-        # Solo tomar la última salida
+        # Take only the last output
         out = self.fc(out[:, -1, :])
         return out

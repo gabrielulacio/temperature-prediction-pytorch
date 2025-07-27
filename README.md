@@ -1,6 +1,6 @@
 # Temperature Prediction with PyTorch
 
-Predict daily temperatures for the next 15 days using LSTM neural networks.
+Predict daily temperatures for the next N days using LSTM neural networks.
 
 ## Features
 
